@@ -1,6 +1,6 @@
 # Python Learn day1
 
-<p>2018年01月09日19:20:27</p>
+<p>2018年01月09日19:38:37</p>
 
 >简介：Python入门、变量和数据类型、List、Tuple、set、if、while、for、Dict
 
@@ -26,15 +26,15 @@
 
 JAVA:
 
-    <pre>int a = 10;
+    int a = 10;
     String b = 'abc';
-    int c = a + b;//此时报错，因为类型不同，强转</pre>
+    int c = a + b;//此时报错，因为类型不同，强转
     
 Python：
 
-    <code>a = 10;
+    a = 10;
     b = "abc";
-    c = a + b;//输出：10abc，并不会报错</pre>
+    c = a + b;//输出：10abc，并不会报错
 
 * 2.单行注释在代码块的头部加上#号；
 
