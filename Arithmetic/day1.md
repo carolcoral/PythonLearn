@@ -23,12 +23,15 @@
 
 * 1.因为 python 是一种动态的编程语言，因此对于数据类型并没有像 java 一样必须要相同的数据类型才能进行操作。Python 的基本数据类型是：整数型、浮点型、字符串型。
 例如：
+
 JAVA:
+
     <code>int a = 10;
     String b = 'abc';
     int c = a + b;//此时报错，因为类型不同，强转</code>
     
 Python：
+
     <code>a = 10;
     b = "abc";
     c = a + b;//输出：10abc，并不会报错</code>
@@ -62,8 +65,10 @@ Python：
 * 可以通过下标访问 List 集合中的元素，例如 L[0]，list 集合的下标时从0开始的，当我们想要从最后一个访问的话直接输入 L[-1]即代表该集合的最后一个元素，依次倒序的下标时-2、-3、-4等。
 
 * 增加 list 中的元素有两种方法：
->1.append()新增元素到集合的末尾：<code>L.append('python')</code>
->2.insert(index, value)方法中有两个参数，第一个参数表示想要新增数据在 list 中的位置，第二个参数表示新增的元素的数据内容，例如：<code>L.insert(1,'me')</code>即表示在下标为1的位置新增一个内容为'me'的元素
+
+    >1.append()新增元素到集合的末尾：<code>L.append('python')</code>
+
+    >2.insert(index, value)方法中有两个参数，第一个参数表示想要新增数据在 list 中的位置，第二个参数表示新增的元素的数据内容，例如：<code>L.insert(1,'me')</code>即表示在下标为1的位置新增一个内容为'me'的元素
 
 * 删除 list 集合中的元素使用 pop()方法，例如：<code>L.pop(2)</code> 表示删除下标为2的元素
 
@@ -104,9 +109,13 @@ set(['A', 'C', 'B'])</code>
 因为set不能包含重复的元素，所以，当我们传入包含重复元素的 list 会怎么样呢？
 
 <code>\>>> s = set(['A', 'B', 'C', 'C'])
+
 \>>> print s
+
 set(['A', 'C', 'B'])
+
 \>>> len(s)
+
 3</code>
 
 结果显示，set会自动去掉重复的元素，原来的list有4个元素，但set只有3个元素。
@@ -120,43 +129,34 @@ set(['A', 'C', 'B'])
 我们可以用 in 操作符判断：Bart是该班的同学吗？
 
 <code>\>>> 'Bart' in s
+
 True</code>
 
 Bill是该班的同学吗？
 
 <code>\>>> 'Bill' in s
+
 False</code>
 
 bart是该班的同学吗？
 
 <code>\>>> 'bart' in s
+
 False</code>
 
 看来大小写很重要，'Bart' 和 'bart'被认为是两个不同的元素。
 
-* set的内部结构和dict很像，唯一区别是不存储value，因此，判断一个元素是否在set中速度很快。
-
-set存储的元素和dict的key类似，必须是不变对象，因此，任何可变对象是不能放入set中的。
-
-最后，set存储的元素也是没有顺序的。
-
-set的这些特点，可以应用在哪些地方呢？
-
-星期一到星期日可以用字符串'MON', 'TUE', ... 'SUN'表示。
-
-假设我们让用户输入星期一至星期日的某天，如何判断用户的输入是否是一个有效的星期呢？
-
-可以用 if 语句判断，但这样做非常繁琐：
-
+* set的内部结构和dict很像，唯一区别是不存储value，因此，判断一个元素是否在set中速度很快。set存储的元素和dict的key类似，必须是不变对象，因此，任何可变对象是不能放入set中的。最后，set存储的元素也是没有顺序的。set的这些特点，可以应用在哪些地方呢？
+    <pre>星期一到星期日可以用字符串'MON', 'TUE', ... 'SUN'表示。假设我们让用户输入星期一至星期日的某天，如何判断用户的输入是否是一个有效的星期呢？可以用 if 语句判断，但这样做非常繁琐：
 <code>x = '???' # 用户输入的字符串
+
 if x!= 'MON' and x!= 'TUE' and x!= 'WED' ... and x!= 'SUN':
-    print 'input error'
+
+     print 'input error'
+    
 else:
-    print 'input ok'</code>
 
-注意：if 语句中的...表示没有列出的其它星期名称，测试时，请输入完整。
-
-如果事先创建好一个set，包含'MON' ~ 'SUN'：
+    print 'input ok'</code>注意：if语句中的...表示没有列出的其它星期名称，测试时，请输入完整。如果事先创建好一个set，包含'MON' ~ 'SUN'：
 
 <code>weekdays = set(['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'])</code>
 
@@ -168,55 +168,53 @@ if x in weekdays:
 else:
     print 'input error'</code>
 
-这样一来，代码就简单多了。
+这样一来，代码就简单多了。</pre>
 
 
 * 由于 set 也是一个集合，所以，遍历 set 和遍历 list 类似，都可以通过 for 循环实现。
 
-直接使用 for 循环可以遍历 set 的元素：
+    <pre>直接使用 for 循环可以遍历 set 的元素：
 
 <code>\>>> s = set(['Adam', 'Lisa', 'Bart'])
+
 \>>> for name in s:
+
 ...     print name
+
 ... 
+
 Lisa
+
 Adam
+
 Bart</code>
 
-注意: 观察 for 循环在遍历set时，元素的顺序和list的顺序很可能是不同的，而且不同的机器上运行的结果也可能不同。
+注意: 观察 for 循环在遍历set时，元素的顺序和list的顺序很可能是不同的，而且不同的机器上运行的结果也可能不同。</pre>
 
 * 由于set存储的是一组不重复的无序元素，因此，更新set主要做两件事：一是把新的元素添加到set中，二是把已有元素从set中删除。
+    <pre>添加元素时，用set的add()方法：
 
-添加元素时，用set的add()方法：
-
-<code>\>>> s = set([1, 2, 3])
-\>>> s.add(4)
-\>>> print s
-set([1, 2, 3, 4])</code>
-
-如果添加的元素已经存在于set中，add()不会报错，但是不会加进去了：
-
-<code>\>>> s = set([1, 2, 3])
-\>>> s.add(3)
-\>>> print s
-set([1, 2, 3])</code>
-
-删除set中的元素时，用set的remove()方法：
-
-<code>\>>> s = set([1, 2, 3, 4])
-\>>> s.remove(4)
-\>>> print s
-set([1, 2, 3])</code>
-
-如果删除的元素不存在set中，remove()会报错：
-
-<code>\>>> s = set([1, 2, 3])
-\>>> s.remove(4)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-KeyError: 4</code>
-
-所以用add()可以直接添加，而remove()前需要判断。
+<code>\>>> s = set([1, 2, 3])<br>
+\>>> s.add(4)<br>
+\>>> print s<br>
+set([1, 2, 3, 4])</code><br>
+如果添加的元素已经存在于set中，add()不会报错，但是不会加进去了：<br>
+<code>\>>> s = set([1, 2, 3])<br>
+\>>> s.add(3)<br>
+\>>> print s<br>
+set([1, 2, 3])</code><br>
+删除set中的元素时，用set的remove()方法：<br>
+<code>\>>> s = set([1, 2, 3, 4])<br>
+\>>> s.remove(4)<br>
+\>>> print s<br>
+set([1, 2, 3])</code><br>
+如果删除的元素不存在set中，remove()会报错：<br>
+<code>\>>> s = set([1, 2, 3])<br>
+\>>> s.remove(4)<br>
+Traceback (most recent call last):<br>
+  File "<stdin>", line 1, in <module><br>
+KeyError: 4</code><br>
+所以用add()可以直接添加，而remove()前需要判断。</pre>
 
 4.Dict { key1 : value1,  key2 : value2,.....}
 
