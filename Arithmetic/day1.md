@@ -26,15 +26,15 @@
 
 JAVA:
 
-    <code>int a = 10;
+    <pre>int a = 10;
     String b = 'abc';
-    int c = a + b;//此时报错，因为类型不同，强转</code>
+    int c = a + b;//此时报错，因为类型不同，强转</pre>
     
 Python：
 
     <code>a = 10;
     b = "abc";
-    c = a + b;//输出：10abc，并不会报错</code>
+    c = a + b;//输出：10abc，并不会报错</pre>
 
 * 2.单行注释在代码块的头部加上#号；
 
@@ -80,21 +80,17 @@ Python：
 
 * tuple 使用小括号进行创建，例如：<code>T = ('1','2')</code>，需要注意的是，当我们的 tuple 列表中只有一个元素的时候系统并不会识别为元组类型，因此当我们的元组内只有一个数据的时候我们需要在后面加上一个逗号，例如：<code>t = (1,)</code>即可
 
-* 如何改变一个元祖中的数据呢，如果按照标准结构写的 tuple 列表是不能该表的，但是 list 集合是可以改变的，所以我们可以把 tuple 元组中的数据变成 list 类型的即可，写如：<code>lt = (['me','am'],['jj',1])</code>这样我们就可以赋值的方式取出需要修改的数据的对应集合然后再进行下一步操作。例如我们想要修改 'jj' 这个数据为 'mm' 可以进行如下操作：
-
-    <code>l = lt[1]
-    l.insert(0,'mm')</code>
-    
-    这样就可以实现修改元组中的数据了
-    
+* 如何改变一个元祖中的数据呢，如果按照标准结构写的 tuple 列表是不能该表的，但是 list 集合是可以改变的，所以我们可以把 tuple 元组中的数据变成 list 类型的即可，写如：<code>lt = (['me','am'],['jj',1])</code>这样我们就可以赋值的方式取出需要修改的数据的对应集合然后再进行下一步操作。例如我们想要修改 'jj' 这个数据为 'mm' 可以进行如下操作：<br>
+    <pre>l = lt[1]<br>
+    l.insert(0,'mm')</pre><br>
+    这样就可以实现修改元组中的数据了<br>
 <center><img src="http://img.mukewang.com/540538d400010f4603500260.jpg"></center>
 
 3.Set ( [list] )
 
 * dict的作用是建立一组 key 和一组 value的映射关系，dict的key是不能重复的。有的时候，我们只想要 dict 的 key，不关心 key 对应的value，目的就是保证这个集合的元素不会重复，这时，set就派上用场了。set 持有一系列元素，这一点和 list 很像，但是set的元素没有重复，而且是无序的，这点和 dict 的 key很像。
 
-* set 持有一系列元素，这一点和 list 很像，但是set的元素没有重复，而且是无序的，这点和 dict 的 key很像。
-
+* set 持有一系列元素，这一点和 list 很像，但是set的元素没有重复，而且是无序的，这点和 dict 的 key很像。<br>
 创建 set 的方式是调用 set() 并传入一个 list，list的元素将作为set的元素：
 
 <code>\>>> s = set(['A', 'B', 'C'])</code>
@@ -108,15 +104,11 @@ set(['A', 'C', 'B'])</code>
 
 因为set不能包含重复的元素，所以，当我们传入包含重复元素的 list 会怎么样呢？
 
-<code>\>>> s = set(['A', 'B', 'C', 'C'])
-
-\>>> print s
-
-set(['A', 'C', 'B'])
-
-\>>> len(s)
-
-3</code>
+<code>\>>> s = set(['A', 'B', 'C', 'C'])<br>
+\>>> print s<br>
+set(['A', 'C', 'B'])<br>
+\>>> len(s)<br>
+3</code><br>
 
 结果显示，set会自动去掉重复的元素，原来的list有4个元素，但set只有3个元素。
 
@@ -148,52 +140,35 @@ False</code>
 
 * set的内部结构和dict很像，唯一区别是不存储value，因此，判断一个元素是否在set中速度很快。set存储的元素和dict的key类似，必须是不变对象，因此，任何可变对象是不能放入set中的。最后，set存储的元素也是没有顺序的。set的这些特点，可以应用在哪些地方呢？
     <pre>星期一到星期日可以用字符串'MON', 'TUE', ... 'SUN'表示。假设我们让用户输入星期一至星期日的某天，如何判断用户的输入是否是一个有效的星期呢？可以用 if 语句判断，但这样做非常繁琐：
-<code>x = '???' # 用户输入的字符串
-
-if x!= 'MON' and x!= 'TUE' and x!= 'WED' ... and x!= 'SUN':
-
-     print 'input error'
-    
-else:
-
-    print 'input ok'</code>注意：if语句中的...表示没有列出的其它星期名称，测试时，请输入完整。如果事先创建好一个set，包含'MON' ~ 'SUN'：
-
-<code>weekdays = set(['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'])</code>
-
-再判断输入是否有效，只需要判断该字符串是否在set中：
-
-<code>x = '???' # 用户输入的字符串
-if x in weekdays:
-    print 'input ok'
-else:
-    print 'input error'</code>
-
+<code>x = '???' # 用户输入的字符串<br>
+if x!= 'MON' and x!= 'TUE' and x!= 'WED' ... and x!= 'SUN':<br>
+        print 'input error'<br>
+else:<br>
+    print 'input ok'</code><br>注意：if语句中的...表示没有列出的其它星期名称，测试时，请输入完整。<br>
+如果事先创建好一个set，包含'MON' ~ 'SUN'：<br>
+<code>weekdays = set(['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'])</code><br>
+再判断输入是否有效，只需要判断该字符串是否在set中：<br>
+<code>x = '???' # 用户输入的字符串<br>
+if x in weekdays:<br>
+    print 'input ok'<br>
+else:<br>
+    print 'input error'</code><br>
 这样一来，代码就简单多了。</pre>
 
 
-* 由于 set 也是一个集合，所以，遍历 set 和遍历 list 类似，都可以通过 for 循环实现。
-
+* 由于 set 也是一个集合，所以，遍历 set 和遍历 list 类似，都可以通过 for 循环实现。<br>
     <pre>直接使用 for 循环可以遍历 set 的元素：
-
-<code>\>>> s = set(['Adam', 'Lisa', 'Bart'])
-
-\>>> for name in s:
-
-...     print name
-
-... 
-
-Lisa
-
-Adam
-
-Bart</code>
-
+<code>\>>> s = set(['Adam', 'Lisa', 'Bart'])<br>
+\>>> for name in s:<br>
+...     print name<br>
+... <br>
+Lisa<br>
+Adam<br>
+Bart</code><br>
 注意: 观察 for 循环在遍历set时，元素的顺序和list的顺序很可能是不同的，而且不同的机器上运行的结果也可能不同。</pre>
 
 * 由于set存储的是一组不重复的无序元素，因此，更新set主要做两件事：一是把新的元素添加到set中，二是把已有元素从set中删除。
-    <pre>添加元素时，用set的add()方法：
-
+    <pre>添加元素时，用set的add()方法：<br>
 <code>\>>> s = set([1, 2, 3])<br>
 \>>> s.add(4)<br>
 \>>> print s<br>
@@ -248,13 +223,12 @@ KeyError: 4</code><br>
 
 * 由于dict也是一个集合，所以，遍历dict和遍历list类似，都可以通过 for 循环实现。直接使用for循环可以遍历 dict 的 key：
 
-<code>>>> d = { 'Adam': 95, 'Lisa': 85, 'Bart': 59 }
-\>>> for key in d:
-\>>>     print key
-Lisa
-Adam
-Bart</code>
-
+<code>>>> d = { 'Adam': 95, 'Lisa': 85, 'Bart': 59 }<br>
+\>>> for key in d:<br>
+\>>>     print key<br>
+Lisa<br>
+Adam<br>
+Bart</code><br>
 由于通过 key 可以获取对应的value，因此，在循环体内，可以获取到value的值。
 
 
@@ -284,13 +258,13 @@ if a == b</code>
 
 * <code>while 条件</code>
 
-例如：<code>
-sum = 0
-x = 1
-while x<=100:
-    if x%2!=0
-        sum = sum+x
-print sum</code>
+例如：<br>
+<code>sum = 0<br>
+x = 1<br>
+while x<=100:<br>
+    if x%2!=0<br>
+        sum = sum+x<br>
+print sum</code><br>
 
 * 跳出循环 break
 
@@ -300,8 +274,8 @@ print sum</code>
 
 * Python的 for 循环就可以依次把list或tuple的每个元素迭代出来：
 
-<code>L = ['Adam', 'Lisa', 'Bart']
-for name in L:
-    print name</code>
+<code>L = ['Adam', 'Lisa', 'Bart']<br>
+for name in L:<br>
+    print name</code><br>
     
 注意:  name 这个变量是在for循环中定义的，意思是，依次取出list中的每一个元素，并把元素赋值给name，然后执行for循环体（就是缩进的代码块）。这样一来，遍历一个list或tuple就非常容易了。
