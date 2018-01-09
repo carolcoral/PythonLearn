@@ -1,6 +1,6 @@
 # Python Learn day1
 
-<p>2018年01月09日19:16:42<p>
+<p>2018年01月09日19:20:27</p>
 
 >简介：Python入门、变量和数据类型、List、Tuple、set、if、while、for、Dict
 
@@ -23,19 +23,14 @@
 
 * 1.因为 python 是一种动态的编程语言，因此对于数据类型并没有像 java 一样必须要相同的数据类型才能进行操作。Python 的基本数据类型是：整数型、浮点型、字符串型。
 例如：
-JAVA:<code>
-    int a = 10;
-
+JAVA:
+    <code>int a = 10;
     String b = 'abc';
-    
     int c = a + b;//此时报错，因为类型不同，强转</code>
     
-Python：<code>
-
-    a = 10;
-    
+Python：
+    <code>a = 10;
     b = "abc";
-    
     c = a + b;//输出：10abc，并不会报错</code>
 
 * 2.单行注释在代码块的头部加上#号；
@@ -83,7 +78,6 @@ Python：<code>
 * 如何改变一个元祖中的数据呢，如果按照标准结构写的 tuple 列表是不能该表的，但是 list 集合是可以改变的，所以我们可以把 tuple 元组中的数据变成 list 类型的即可，写如：<code>lt = (['me','am'],['jj',1])</code>这样我们就可以赋值的方式取出需要修改的数据的对应集合然后再进行下一步操作。例如我们想要修改 'jj' 这个数据为 'mm' 可以进行如下操作：
 
     <code>l = lt[1]
-    
     l.insert(0,'mm')</code>
     
     这样就可以实现修改元组中的数据了
@@ -103,7 +97,6 @@ Python：<code>
 可以查看 set 的内容：
 
 <code>\>>> print s
-
 set(['A', 'C', 'B'])</code>
 
 请注意，上述打印的形式类似 list， 但它不是 list，仔细看还可以发现，打印的顺序和原始 list 的顺序有可能是不同的，因为set内部存储的元素是无序的。
@@ -111,13 +104,9 @@ set(['A', 'C', 'B'])</code>
 因为set不能包含重复的元素，所以，当我们传入包含重复元素的 list 会怎么样呢？
 
 <code>\>>> s = set(['A', 'B', 'C', 'C'])
-
 \>>> print s
-
 set(['A', 'C', 'B'])
-
 \>>> len(s)
-
 3</code>
 
 结果显示，set会自动去掉重复的元素，原来的list有4个元素，但set只有3个元素。
@@ -131,19 +120,16 @@ set(['A', 'C', 'B'])
 我们可以用 in 操作符判断：Bart是该班的同学吗？
 
 <code>\>>> 'Bart' in s
-
 True</code>
 
 Bill是该班的同学吗？
 
 <code>\>>> 'Bill' in s
-
 False</code>
 
 bart是该班的同学吗？
 
 <code>\>>> 'bart' in s
-
 False</code>
 
 看来大小写很重要，'Bart' 和 'bart'被认为是两个不同的元素。
@@ -163,13 +149,9 @@ set的这些特点，可以应用在哪些地方呢？
 可以用 if 语句判断，但这样做非常繁琐：
 
 <code>x = '???' # 用户输入的字符串
-
 if x!= 'MON' and x!= 'TUE' and x!= 'WED' ... and x!= 'SUN':
-
     print 'input error'
-
 else:
-
     print 'input ok'</code>
 
 注意：if 语句中的...表示没有列出的其它星期名称，测试时，请输入完整。
@@ -181,13 +163,9 @@ else:
 再判断输入是否有效，只需要判断该字符串是否在set中：
 
 <code>x = '???' # 用户输入的字符串
-
 if x in weekdays:
-
     print 'input ok'
-
 else:
-
     print 'input error'</code>
 
 这样一来，代码就简单多了。
@@ -198,17 +176,11 @@ else:
 直接使用 for 循环可以遍历 set 的元素：
 
 <code>\>>> s = set(['Adam', 'Lisa', 'Bart'])
-
 \>>> for name in s:
-
 ...     print name
-
 ... 
-
 Lisa
-
 Adam
-
 Bart</code>
 
 注意: 观察 for 循环在遍历set时，元素的顺序和list的顺序很可能是不同的，而且不同的机器上运行的结果也可能不同。
@@ -218,43 +190,30 @@ Bart</code>
 添加元素时，用set的add()方法：
 
 <code>\>>> s = set([1, 2, 3])
-
 \>>> s.add(4)
-
 \>>> print s
-
 set([1, 2, 3, 4])</code>
 
 如果添加的元素已经存在于set中，add()不会报错，但是不会加进去了：
 
 <code>\>>> s = set([1, 2, 3])
-
 \>>> s.add(3)
-
 \>>> print s
-
 set([1, 2, 3])</code>
 
 删除set中的元素时，用set的remove()方法：
 
 <code>\>>> s = set([1, 2, 3, 4])
-
 \>>> s.remove(4)
-
 \>>> print s
-
 set([1, 2, 3])</code>
 
 如果删除的元素不存在set中，remove()会报错：
 
 <code>\>>> s = set([1, 2, 3])
-
 \>>> s.remove(4)
-
 Traceback (most recent call last):
-
   File "<stdin>", line 1, in <module>
-
 KeyError: 4</code>
 
 所以用add()可以直接添加，而remove()前需要判断。
@@ -282,27 +241,20 @@ KeyError: 4</code>
 再看看dict的内容：
 
 <code>>>> print d
-
 {'Lisa': 85, 'Paul': 72, 'Adam': 95, 'Bart': 59}</code>
 
 如果 key 已经存在，则赋值会用新的 value 替换掉原来的 value：
 
 <code>>>> d['Bart'] = 60
-
 \>>> print d{'Lisa': 85, 'Paul': 72, 'Adam': 95, 'Bart': 60}</code>
 
 * 由于dict也是一个集合，所以，遍历dict和遍历list类似，都可以通过 for 循环实现。直接使用for循环可以遍历 dict 的 key：
 
 <code>>>> d = { 'Adam': 95, 'Lisa': 85, 'Bart': 59 }
-
 \>>> for key in d:
-
 \>>>     print key
-
 Lisa
-
 Adam
-
 Bart</code>
 
 由于通过 key 可以获取对应的value，因此，在循环体内，可以获取到value的值。
@@ -314,10 +266,9 @@ Bart</code>
 
 * 判断元素时候存在：<code>if a in b</code>
 
-* 判断元素是否等于：<code>
+* 判断元素是否等于：
 
-if a is b
-
+<code>if a is b
 if a == b</code>
 
 两者的区别在于第一个是判断值相等，第二个判断所有信息是否相等。
@@ -336,17 +287,11 @@ if a == b</code>
 * <code>while 条件</code>
 
 例如：<code>
-
 sum = 0
-
 x = 1
-
 while x<=100:
-
     if x%2!=0
-    
         sum = sum+x
-        
 print sum</code>
 
 * 跳出循环 break
@@ -358,9 +303,7 @@ print sum</code>
 * Python的 for 循环就可以依次把list或tuple的每个元素迭代出来：
 
 <code>L = ['Adam', 'Lisa', 'Bart']
-
 for name in L:
-
     print name</code>
     
 注意:  name 这个变量是在for循环中定义的，意思是，依次取出list中的每一个元素，并把元素赋值给name，然后执行for循环体（就是缩进的代码块）。这样一来，遍历一个list或tuple就非常容易了。
