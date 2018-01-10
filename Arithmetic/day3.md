@@ -27,9 +27,9 @@
     
 示例：
 
-        \>>>def and(x,y,f):
+        >>>def and(x,y,f):
             return f(x)+f(y)        
-        \>>>and(-5,9,abs)
+        >>>and(-5,9,abs)
         14
 
 其中我们把 <code>abs()</code> 求绝对值的函数传入了 <code>and()</code> 函数中，这样就实现了变量指向函数的行为
