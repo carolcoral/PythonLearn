@@ -1,6 +1,6 @@
 # Python Learn day02
 
-<p>2018年01月10日10:04:54<p>
+<p>2018年01月10日13:57:02<p>
 
 <div style="background:#cccfff;border-radius:10px">简介：python 函数、切片、迭代、列表生成式</div>
 
@@ -462,3 +462,87 @@ dict 对象有一个 <code>values()</code>方法，这个方法把dict转换成�
 和 <code>values()</code> 有一个 <code>itervalues()</code> 类似， <code>items()</code> 也有一个对应的 <code>iteritems()</code>，<code>iteritems()</code> 不把dict转换成list，而是在迭代过程中不断给出 tuple，所以， <code>iteritems()</code> 不占用额外的内存。
 
 # 列表生成式
+
+## 1. 生成列表
+
+要生成list [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们可以用<code>range(1, 11)</code>：
+
+        >>> range(1, 11)
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+但如果要生成[1x1, 2x2, 3x3, ..., 10x10]怎么做？方法一是循环：
+
+        >>> L = []
+        >>> for x in range(1, 11):
+        ...    L.append(x * x)
+        ... 
+        >>> L
+        [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+但是循环太繁琐，而列表生成式则可以用一行语句代替循环生成上面的list：
+
+        >>> [x * x for x in range(1, 11)]
+        [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+这种写法就是Python特有的列表生成式。利用列表生成式，可以以非常简洁的代码生成 list。
+
+写列表生成式时，把要生成的元素 x * x 放到前面，后面跟 for 循环，就可以把list创建出来，十分有用，多写几次，很快就可以熟悉这种语法。
+
+## 2. 复杂表达式
+
+使用for循环的迭代不仅可以迭代普通的list，还可以迭代dict。
+
+假设有如下的dict：
+
+    d = { 'Adam': 95, 'Lisa': 85, 'Bart': 59 }
+
+完全可以通过一个复杂的列表生成式把它变成一个 HTML 表格：
+
+        tds = ['<tr><td>%s</td><td>%s</td></tr>' % (name, score) for name, score in d.iteritems()]
+        print '<table>'
+        print '<tr><th>Name</th><th>Score</th><tr>'
+        print '\n'.join(tds)
+        print '</table>'
+
+注：字符串可以通过 % 进行格式化，用指定的参数替代 %s。字符串的join()方法可以把一个 list 拼接成一个字符串。
+
+把打印出来的结果保存为一个html文件，就可以在浏览器中看到效果了：
+
+    <table border="1">
+        <tr><th>Name</th><th>Score</th><tr>
+        <tr><td>Lisa</td><td>85</td></tr>
+        <tr><td>Adam</td><td>95</td></tr>
+        <tr><td>Bart</td><td>59</td></tr>
+    </table>
+
+<img src="http://img.mukewang.com/540fcd2a0001ff4600940104.jpg">
+
+## 3. 条件过滤
+
+列表生成式的 for 循环后面还可以加上 if 判断。例如：
+
+        >>> [x * x for x in range(1, 11)]
+        [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+如果我们只想要偶数的平方，不改动 <code>range()</code>的情况下，可以加上 if 来筛选：
+
+        >>> [x * x for x in range(1, 11) if x % 2 == 0]
+        [4, 16, 36, 64, 100]
+
+有了 if 条件，只有 if 判断为 True 的时候，才把循环的当前元素添加到列表中。
+
+## 4. 多层表达式
+
+for循环可以嵌套，因此，在列表生成式中，也可以用多层 for 循环来生成列表。
+
+对于字符串 'ABC' 和 '123'，可以使用两层循环，生成全排列：
+
+        >>> [m + n for m in 'ABC' for n in '123']
+        ['A1', 'A2', 'A3', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3']
+
+翻译成循环代码就像下面这样：
+
+        L = []
+        for m in 'ABC':
+            for n in '123':
+                L.append(m + n)
