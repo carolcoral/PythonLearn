@@ -1,6 +1,6 @@
 # Python Learn day03
 
-<p>2018年01月10日15:09:07</p>
+<p>2018年01月10日15:10:50</p>
 
 <div style="border-radius:10px;background:#fffddd">函数式编程</div>
 
@@ -27,10 +27,10 @@
     
 示例：
 
-    >\>>>def and(x,y,f):
-    >   ....return f(x)+f(y)        
-    >\>>>and(-5,9,abs)
-    >14
+        \>>>def and(x,y,f):
+            return f(x)+f(y)        
+        \>>>and(-5,9,abs)
+        14
 
 其中我们把 <code>abs()</code> 求绝对值的函数传入了 <code>and()</code> 函数中，这样就实现了变量指向函数的行为
     
