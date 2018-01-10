@@ -16,7 +16,7 @@ Python内置了很多有用的函数，我们可以直接调用。
 
 可以直接从Python的官方网站查看文档：
 
-        http://docs.python.org/2/library/functions.html#abs
+        [http://docs.python.org/2/library/functions.html#abs](http://docs.python.org/2/library/functions.html#abs)
 
 也可以在交互式命令行通过 help(abs) 查看abs函数的帮助信息。
 
