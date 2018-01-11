@@ -1,5 +1,6 @@
 # PythonLearn
-Learn Python
+
+>感觉到很有压力，小学生都在学习 Python 了，自己刚好这段时间比较有空闲也开始自己学习下 Python，把学习过程中的一些笔记都记录在这里，希望大家共勉！PS:Java 部分会同步更新的，周末不更新！
 
 # Arithmetic
 
