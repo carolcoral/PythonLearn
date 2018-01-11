@@ -1,6 +1,6 @@
 # Python Learn day04
 
-<p>2018年01月11日16:42:38</p>
+<p>2018年01月11日17:02:05</p>
 
 <div style="border-radius:10px;background:#fffddd">模块、包、面向对象编程基础</div>
 
@@ -127,9 +127,46 @@ Python的新版本会引入新的功能，但是，实际上这些功能在上�
 
 # 面向对象编程基础
 
-### 
+通过 class 定义类，实例调用类方法；
 
-### 
+        定义类：class Person():
+        定义实例：xiaoming = new Person()
+
+### 定义类并创建实例
+
+在Python中，类通过 class 关键字定义。以 Person 为例，定义一个Person类如下：
+
+        class Person(object):
+            pass
+
+按照 Python 的编程习惯，类名以大写字母开头，紧接着是(object)，表示该类是从哪个类继承下来的。类的继承将在后面的章节讲解，现在我们只需要简单地从object类继承。
+
+有了Person类的定义，就可以创建出具体的xiaoming、xiaohong等实例。创建实例使用 类名+()，类似函数调用的形式创建：
+
+        xiaoming = Person()
+        xiaohong = Person()
+
+### 创建实例属性
+
+虽然可以通过Person类创建出xiaoming、xiaohong等实例，但是这些实例看上除了地址不同外，没有什么其他不同。在现实世界中，区分xiaoming、xiaohong要依靠他们各自的名字、性别、生日等属性。
+
+如何让每个实例拥有各自不同的属性？由于Python是动态语言，对每一个实例，都可以直接给他们的属性赋值，例如，给xiaoming这个实例加上name、gender和birth属性：
+
+        xiaoming = Person()
+        xiaoming.name = 'Xiao Ming'
+        xiaoming.gender = 'Male'
+        xiaoming.birth = '1990-1-1'
+
+给xiaohong加上的属性不一定要和xiaoming相同：
+
+        xiaohong = Person()
+        xiaohong.name = 'Xiao Hong'
+        xiaohong.school = 'No. 1 High School'
+        xiaohong.grade = 2
+
+实例的属性可以像普通变量一样进行操作：
+
+        xiaohong.grade = xiaohong.grade + 1
 
 ### 
 
