@@ -1,6 +1,6 @@
 # Python Learn day05
 
-<p></p>
+<p>2018年01月15日19:18:25</p>
 
 <div style="border-radius:10px;background:#fffddd">继承、多态、定制类</div>
 
@@ -259,5 +259,384 @@ dir()返回的属性是字符串列表，如果已知一个属性名称，要获
 
 ## 定制类
 
+### 什么是特殊方法
 
+用于 print 的<code>\__str__</code>
 
+用于 len 的<code>\__len__</code>
+
+用于 cmp 的<code>\__cmp__</code>
+
+特点：
+
+1.特殊方法定义在 class 中
+
+2.不需要直接调用
+
+3.Python 的某些函数或操作符会调用对应的特殊方法
+
+<img src="https://img4.mukewang.com/5a5c76910001e63112800720.jpg">
+
+正确实现特殊方法：
+
+1.只需要编写需要的特殊方法
+
+2.有关联性的特殊方法都必须实现
+
+例如当我们实现<code>\__getattr__</code>函数的时候就必须同时实现<code>\__setattr__</code>和<code>\__delattr__</code>
+
+###  __str__和__repr__
+
+如果要把一个类的实例变成 str，就需要实现特殊方法<code>\__str__()</code>：
+
+        class Person(object):
+            def __init__(self, name, gender):
+                self.name = name
+                self.gender = gender
+            def __str__(self):
+                return '(Person: %s, %s)' % (self.name, self.gender)
+                
+现在，在交互式命令行下用 print 试试：
+
+        >>> p = Person('Bob', 'male')
+        >>> print p
+        (Person: Bob, male)
+        
+但是，如果直接敲变量 p：
+
+        >>> p
+        <main.Person object at 0x10c941890>
+        
+似乎<code>\__str__()</code> 不会被调用。
+
+因为 Python 定义了<code>\__str__()</code>和<code>\__repr__()</code>两种方法，<code>\__str__()</code>用于显示给用户，而<code>\__repr__()</code>用于显示给开发人员。
+
+有一个偷懒的定义<code>\__repr__</code>的方法：
+
+        class Person(object):
+            def __init__(self, name, gender):
+                self.name = name
+                self.gender = gender
+            def __str__(self):
+                return '(Person: %s, %s)' % (self.name, self.gender)
+            __repr__ = __str__
+
+### python中 \__cmp__
+
+对 int、str 等内置数据类型排序时，Python的 <code>sorted()</code> 按照默认的比较函数 cmp 排序，但是，如果对一组 Student 类的实例排序时，就必须提供我们自己的特殊方法 <code>\__cmp__()</code>：
+
+        class Student(object):
+            def __init__(self, name, score):
+                self.name = name
+                self.score = score
+            def __str__(self):
+                return '(%s: %s)' % (self.name, self.score)
+            __repr__ = __str__
+        
+            def __cmp__(self, s):
+                if self.name < s.name:
+                    return -1
+                elif self.name > s.name:
+                    return 1
+                else:
+                    return 0
+                    
+上述 Student 类实现了<code>\__cmp__()</code>方法，<code>\__cmp__</code>用实例自身self和传入的实例 s 进行比较，如果 self 应该排在前面，就返回 -1，如果 s 应该排在前面，就返回1，如果两者相当，返回 0。
+
+Student类实现了按name进行排序：
+
+        >>> L = [Student('Tim', 99), Student('Bob', 88), Student('Alice', 77)]
+        >>> print sorted(L)
+        [(Alice: 77), (Bob: 88), (Tim: 99)]
+注意: 如果list不仅仅包含 Student 类，则 <code>\__cmp__</code> 可能会报错：
+
+        L = [Student('Tim', 99), Student('Bob', 88), 100, 'Hello']
+        print sorted(L)
+
+### python中 \__len__
+
+如果一个类表现得像一个list，要获取有多少个元素，就得用 <code>len()</code> 函数。
+
+要让 <code>len()</code> 函数工作正常，类必须提供一个特殊方法<code>\__len__()</code>，它返回元素的个数。
+
+例如，我们写一个 Students 类，把名字传进去：
+
+        class Students(object):
+            def __init__(self, *args):
+                self.names = args
+            def __len__(self):
+                return len(self.names)
+                
+只要正确实现了<code>\__len__()</code>方法，就可以用<code>len()</code>函数返回Students实例的“长度”：
+
+        >>> ss = Students('Bob', 'Alice', 'Tim')
+        >>> print len(ss)
+        3
+        
+        任务：
+        斐波那契数列是由 0, 1, 1, 2, 3, 5, 8...构成。
+        请编写一个Fib类，Fib(10)表示数列的前10个元素，print Fib(10) 可以打印出数列的前 10 个元素，len(Fib(10))可以正确返回数列的个数10。
+        需要根据num计算出斐波那契数列的前N个元素。
+    
+        参考代码:
+        
+        class Fib(object):
+            def __init__(self, num):
+                a, b, L = 0, 1, []
+                for n in range(num):
+                    L.append(a)
+                    a, b = b, a + b
+                self.numbers = L
+        
+            def __str__(self):
+                return str(self.numbers)
+        
+            __repr__ = __str__
+        
+            def __len__(self):
+                return len(self.numbers)
+        
+        f = Fib(10)
+        print f
+        print len(f)
+        
+### python中数学运算
+
+Python 提供的基本数据类型 int、float 可以做整数和浮点的四则运算以及乘方等运算。
+
+但是，四则运算不局限于int和float，还可以是有理数、矩阵等。
+
+要表示有理数，可以用一个Rational类来表示：
+
+        class Rational(object):
+            def __init__(self, p, q):
+                self.p = p
+                self.q = q
+                
+p、q 都是整数，表示有理数 p/q。
+
+如果要让Rational进行+运算，需要正确实现<code>\__add__</code>：
+
+        class Rational(object):
+            def __init__(self, p, q):
+                self.p = p
+                self.q = q
+            def __add__(self, r):
+                return Rational(self.p * r.q + self.q * r.p, self.q * r.q)
+            def __str__(self):
+                return '%s/%s' % (self.p, self.q)
+            __repr__ = __str__
+现在可以试试有理数加法：
+
+        >>> r1 = Rational(1, 3)
+        >>> r2 = Rational(1, 2)
+        >>> print r1 + r2
+        5/6
+
+        任务:
+        Rational类虽然可以做加法，但无法做减法、乘方和除法，请继续完善Rational类，实现四则运算。
+        
+        提示：
+        减法运算：__sub__
+        乘法运算：__mul__
+        除法运算：__div__
+
+        如果运算结果是 6/8，在显示的时候需要归约到最简形式3/4。
+        
+        参考代码:
+        
+        def gcd(a, b):
+            if b == 0:
+                return a
+            return gcd(b, a % b)
+        
+        class Rational(object):
+            def __init__(self, p, q):
+                self.p = p
+                self.q = q
+            def __add__(self, r):
+                return Rational(self.p * r.q + self.q * r.p, self.q * r.q)
+            def __sub__(self, r):
+                return Rational(self.p * r.q - self.q * r.p, self.q * r.q)
+            def __mul__(self, r):
+                return Rational(self.p * r.p, self.q * r.q)
+            def __div__(self, r):
+                return Rational(self.p * r.q, self.q * r.p)
+            def __str__(self):
+                g = gcd(self.p, self.q)
+                return '%s/%s' % (self.p / g, self.q / g)
+            __repr__ = __str__
+        
+        r1 = Rational(1, 2)
+        r2 = Rational(1, 4)
+        print r1 + r2
+        print r1 - r2
+        print r1 * r2
+        print r1 / r2
+        
+### python中类型转换
+
+Rational类实现了有理数运算，但是，如果要把结果转为 int 或 float 怎么办？
+
+考察整数和浮点数的转换：
+
+        >>> int(12.34)
+        12
+        >>> float(12)
+        12.0
+        
+如果要把 Rational 转为 int，应该使用：
+
+        r = Rational(12, 5)
+        n = int(r)
+        
+要让<code>int()</code>函数正常工作，只需要实现特殊方法<code>\__int__()</code>:
+
+        class Rational(object):
+            def __init__(self, p, q):
+                self.p = p
+                self.q = q
+            def __int__(self):
+                return self.p // self.q
+
+结果如下：
+
+        >>> print int(Rational(7, 2))
+        3
+        >>> print int(Rational(1, 3))
+        0
+        
+同理，要让<code>float()</code>函数正常工作，只需要实现特殊方法<code>\__float__()</code>。
+
+### python中 @property
+
+考察 Student 类：
+
+        class Student(object):
+            def __init__(self, name, score):
+                self.name = name
+                self.score = score
+                
+当我们想要修改一个 Student 的 scroe 属性时，可以这么写：
+
+        s = Student('Bob', 59)
+        s.score = 60
+        
+但是也可以这么写：
+
+        s.score = 1000
+        
+显然，直接给属性赋值无法检查分数的有效性。
+
+如果利用两个方法：
+
+        class Student(object):
+            def __init__(self, name, score):
+                self.name = name
+                self.__score = score
+            def get_score(self):
+                return self.__score
+            def set_score(self, score):
+                if score < 0 or score > 100:
+                    raise ValueError('invalid score')
+                self.__score = score
+                
+这样一来，s.set_score(1000) 就会报错。
+
+这种使用 get/set 方法来封装对一个属性的访问在许多面向对象编程的语言中都很常见。
+
+但是写 s.get_score() 和 s.set_score() 没有直接写 s.score 来得直接。
+
+有没有两全其美的方法？----有。
+
+因为Python支持高阶函数，在函数式编程中我们介绍了装饰器函数，可以用装饰器函数把 get/set 方法“装饰”成属性调用：
+
+        class Student(object):
+            def __init__(self, name, score):
+                self.name = name
+                self.__score = score
+            @property
+            def score(self):
+                return self.__score
+            @score.setter
+            def score(self, score):
+                if score < 0 or score > 100:
+                    raise ValueError('invalid score')
+                self.__score = score
+                
+<font color="red">注意: 第一个score(self)是get方法，用@property装饰，第二个score(self, score)是set方法，用@score.setter装饰，@score.setter是前一个@property装饰后的副产品。</font>
+
+现在，就可以像使用属性一样设置score了：
+
+        >>> s = Student('Bob', 59)
+        >>> s.score = 60
+        >>> print s.score
+        60
+        >>> s.score = 1000
+        Traceback (most recent call last):
+          ...
+        ValueError: invalid score
+        
+说明对 score 赋值实际调用的是 set方法。
+
+### python中 \__slots__
+
+由于Python是动态语言，任何实例在运行期都可以动态地添加属性。
+
+如果要限制添加的属性，例如，Student类只允许添加 name、gender和score 这3个属性，就可以利用Python的一个特殊的<code>\__slots__</code>来实现。
+
+顾名思义，<code>\__slots__</code>是指一个类允许的属性列表：
+
+        class Student(object):
+            __slots__ = ('name', 'gender', 'score')
+            def __init__(self, name, gender, score):
+                self.name = name
+                self.gender = gender
+                self.score = score
+
+现在，对实例进行操作：
+
+        >>> s = Student('Bob', 'male', 59)
+        >>> s.name = 'Tim' # OK
+        >>> s.score = 99 # OK
+        >>> s.grade = 'A'
+        Traceback (most recent call last):
+          ...
+        AttributeError: 'Student' object has no attribute 'grade'
+
+<code>\__slots__</code>的目的是限制当前类所能拥有的属性，如果不需要添加任意动态的属性，使用<code>\__slots__</code>也能节省内存。
+
+### python中 \__call__
+在Python中，函数其实是一个对象：
+
+        >>> f = abs
+        >>> f.__name__
+        'abs'
+        >>> f(-123)
+        123
+        
+由于 f 可以被调用，所以，f 被称为可调用对象。
+
+所有的函数都是可调用对象。
+
+一个类实例也可以变成一个可调用对象，只需要实现一个特殊方法<code>\__call__()</code>。
+
+我们把 Person 类变成一个可调用对象：
+
+        class Person(object):
+            def __init__(self, name, gender):
+                self.name = name
+                self.gender = gender
+        
+            def __call__(self, friend):
+                print 'My name is %s...' % self.name
+                print 'My friend is %s...' % friend
+                
+现在可以对 Person 实例直接调用：
+
+        >>> p = Person('Bob', 'male')
+        >>> p('Tim')
+        My name is Bob...
+        My friend is Tim...
+        
+单看 p('Tim') 你无法确定 p 是一个函数还是一个类实例，所以，在Python中，函数也是对象，对象和函数的区别并不显著。
