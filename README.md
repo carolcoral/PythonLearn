@@ -24,7 +24,7 @@
 
 ## Python 中函数的作用域、闭包和装饰器
 
->1.[函数作用域、闭包、装饰器]()
+>1.[函数作用域、闭包、装饰器](https://github.com/carolcoral/PythonLearn/blob/master/Arithmetic/函数作用域、闭包、装饰器.md)
 
 # Python 进阶
 
