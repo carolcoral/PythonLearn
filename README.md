@@ -20,16 +20,8 @@
 
 >5.[继承、多态、定制类](https://github.com/carolcoral/PythonLearn/blob/master/Arithmetic/day5.md)
 
-# Python 中函数的作用域
+# Python 中函数的作用域、闭包和装饰器
 
->1.[Python 中的函数作用域]()
+>1.[函数作用域、闭包、装饰器]()
 
-# Python 中的闭包
 
->1.[闭包-1]()
-
->2.[闭包-2]()
-
-#  Python 中的装饰器
-
->1.[Python 中装饰器]()
