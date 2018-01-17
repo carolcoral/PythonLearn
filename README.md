@@ -30,7 +30,7 @@
 
 # Python 进阶
 
->1.[Python 中对文件的操作]()
+>1.[Python 中对文件的操作](https://github.com/carolcoral/PythonLearn/blob/master/Arithmetic/day6.md)
 
 >2.[Python 中的异常和错误]()
 
