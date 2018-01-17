@@ -2,7 +2,7 @@
 
 >感觉到很有压力，小学生都在学习 Python 了，自己刚好这段时间比较有空闲也开始自己学习下 Python，把学习过程中的一些笔记都记录在这里，希望大家共勉！PS:Java 部分会同步更新的，周末不更新！
 
-><font color="red">不好意思，因为现在换了一个环境中学习，可能不能保持更新了。本人觉得这个学习资料更加全面和具有深度，有兴趣的也可以去看看：[https://www.shiyanlou.com/paths/python](https://www.shiyanlou.com/paths/python)</code>
+><font color="red">不好意思，因为现在换了一个环境中学习，更新可能不够及时。本人觉得这个学习资料更加全面和具有深度，有兴趣的也可以去看看：[https://www.shiyanlou.com/paths/python](https://www.shiyanlou.com/paths/python)</code>
 
 <b>
   
