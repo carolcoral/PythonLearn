@@ -42,6 +42,33 @@
 
 * Python 开发简单爬虫
 
+# Python 学习视频路径
 
+* Python 基础
 
+>1.[开发环境搭建](https://www.imooc.com/learn/397)
+
+>2.[Python 入门](https://www.imooc.com/learn/177)
+
+>3.[Python 进阶](https://www.imooc.com/learn/317)
+
+>4.[Python 装饰器](https://www.imooc.com/learn/581)
+
+# Python 进阶
+
+>1.[Python 中文件处理](https://www.imooc.com/learn/416)
+
+>2.[Python 中异常和错误](https://www.imooc.com/learn/457)
+
+>3.[Python 中正则表达式](https://www.imooc.com/learn/550)
+
+# Python 实用
+
+>1.[Python 对数据库操作](https://www.imooc.com/learn/475)
+
+>2.[了解 Django 框架](https://www.imooc.com/learn/458)
+
+>3.[Django 入门与实践](https://www.imooc.com/learn/790)
+
+>4.[Python 开发简单爬虫](https://www.imooc.com/learn/563)
 
