@@ -42,6 +42,8 @@
 
 * Python 开发简单爬虫
 
+================================================================================================================================
+
 # Python 学习视频路径
 
 * Python 基础
@@ -54,7 +56,7 @@
 
 >4.[Python 装饰器](https://www.imooc.com/learn/581)
 
-# Python 进阶
+* Python 进阶
 
 >1.[Python 中文件处理](https://www.imooc.com/learn/416)
 
@@ -62,7 +64,7 @@
 
 >3.[Python 中正则表达式](https://www.imooc.com/learn/550)
 
-# Python 实用
+* Python 实用
 
 >1.[Python 对数据库操作](https://www.imooc.com/learn/475)
 
