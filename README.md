@@ -8,6 +8,8 @@
 
 </b>
 
+* lib 文件夹下为 python 开发中可能需要的一些插件
+
 # Python 入门
 
 * Python 基础
