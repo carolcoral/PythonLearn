@@ -6,6 +6,8 @@
   
 * 注意：文章中已有标明更新时间的是最终确认的文章，如没有标明时间戳的则为未完成更新的文章！本文最终以一个简易爬虫项目最为结尾项目。
 
+### Project:[简单的百度百科爬虫程序](https://github.com/carolcoral/BaiduReptilianReptiles)
+
 </b>
 
 * lib 文件夹下为 python 开发中可能需要的一些插件
