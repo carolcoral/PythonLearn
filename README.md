@@ -6,7 +6,6 @@
   
 * 注意：文章中已有标明更新时间的是最终确认的文章，如没有标明时间戳的则为未完成更新的文章！本文最终以一个简易爬虫项目最为结尾项目。
 
-### Project:[简单的百度百科爬虫程序](https://github.com/carolcoral/BaiduReptilianReptiles)
 
 </b>
 
@@ -77,4 +76,8 @@
 >3.[Django 入门与实践](https://www.imooc.com/learn/790)
 
 >4.[Python 开发简单爬虫](https://www.imooc.com/learn/563)
+
+
+## Project练习项目:[简单的百度百科爬虫程序](https://github.com/carolcoral/BaiduReptilianReptiles)
+项目
 
