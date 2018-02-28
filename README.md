@@ -59,8 +59,7 @@
 
 >4.[Python 装饰器](https://www.imooc.com/learn/581)
 
-5https://www.imooc.com/learn/747
->4.[Python 装饰器](https://www.imooc.com/learn/581)
+>5.[Python 面向对象](https://www.imooc.com/learn/747)
 
 * Python 进阶
 
@@ -80,13 +79,17 @@
 
 >4.[Python 开发简单爬虫](https://www.imooc.com/learn/563)
 
+>5.[Python 制作数据分析工具](https://www.imooc.com/learn/937)
+
+>6.[机器学习-实现简单神经网络](https://www.imooc.com/learn/813)
+
 * Python 重要模块学习
 
 >1.[Collection 模块](https://www.imooc.com/learn/934)
 
->2.[]()
+>2.[Requests 库](https://www.imooc.com/learn/736)
 
->3.[]()
+>3.[numpy 人工智能常用库](https://www.imooc.com/learn/943)
 
 * Python Web.py 入门
 
