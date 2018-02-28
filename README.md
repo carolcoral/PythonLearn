@@ -59,6 +59,9 @@
 
 >4.[Python 装饰器](https://www.imooc.com/learn/581)
 
+5https://www.imooc.com/learn/747
+>4.[Python 装饰器](https://www.imooc.com/learn/581)
+
 * Python 进阶
 
 >1.[Python 中文件处理](https://www.imooc.com/learn/416)
@@ -76,6 +79,18 @@
 >3.[Django 入门与实践](https://www.imooc.com/learn/790)
 
 >4.[Python 开发简单爬虫](https://www.imooc.com/learn/563)
+
+* Python 重要模块学习
+
+>1.[Collection 模块](https://www.imooc.com/learn/934)
+
+>2.[]()
+
+>3.[]()
+
+* Python Web.py 入门
+
+>1.[web.py 入门](https://www.imooc.com/learn/753)
 
 
 ## Project练习项目:[简单的百度百科爬虫程序](https://github.com/carolcoral/BaiduReptilianReptiles)
